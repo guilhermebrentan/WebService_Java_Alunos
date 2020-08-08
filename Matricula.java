@@ -1,7 +1,4 @@
-package classes;
-
-public class Matricula
-{
+public class Matricula{
     short ra;
     int cod;
     float nota, freq;
@@ -16,7 +13,7 @@ public class Matricula
     
     //Getters
     public short getRa(){return ra;}
-    public int gerCod(){return cod;}
+    public int getCod(){return cod;}
     public float getNota(){return nota;}
     public float getFreq(){return freq;}
 
@@ -57,7 +54,9 @@ public class Matricula
 
 	Matricula m = (Matricula) obj;
 	
-	if(this.ra != m.ra || this.cod != m.cod || this.nota != m.nota || this.freq != m.nota)
+	System.out.println("passou");
+
+	if(this.ra != m.ra || this.cod != m.cod || this.nota != m.nota || this.freq != m.freq)
 	    return false;
 
         return true;
@@ -84,11 +83,7 @@ public class Matricula
 	this.nota = model.nota;
 	this.freq = model.freq;
     }
-    
-    public Matricula() {
-	}
-
-	public Object clone(){
+    public Object clone(){
         Matricula ret=null;
 
         try{

@@ -1,5 +1,3 @@
-package classes;
-
 import java.lang.reflect.*;
 
 public class LinkedList<X> {
@@ -98,7 +96,7 @@ public class LinkedList<X> {
 	catch(Exception e){}
 	return ret;
     }
-    public boolean equals (Object obj){
+    public boolean equals(Object obj){
         if(this == obj)
             return true;
 	if(obj == null)
@@ -111,39 +109,41 @@ public class LinkedList<X> {
         Node contThis = this.first;
         Node contList = list.first;
 
-	for(; contThis != null && contList != null; contThis = contThis.getNext(), contList.getNext())
+	for(; contThis != null && contList != null; contThis = contThis.getNext(), contList = contList.getNext())
             if(!contThis.getData().equals(contList.getData()))
                 return false;
 
-        if (contThis!=null || contList != null)
-            return false;
+        if(contThis != null)
+		return false;
+	if(contList != null)
+	    	return false;
 
         return true;
     }
-    public int hashCode (){   
+    public int hashCode(){   
         int ret = 55;
 
         for(Node cont = this.first; cont != null; cont = cont.getNext())
              ret = 17*ret + cont.getData().hashCode();
 
-        if(ret<0) ret = -ret;
+        if(ret < 0) ret = -ret;
 
         return ret;
     }
-    public LinkedList (LinkedList<X> model) throws Exception{
+    public LinkedList(LinkedList<X> model) throws Exception{
         if(model == null)
             throw new Exception ("Model nulo");
 
         if(model.first == null)
             return;
 
-        this.first = new Node (model.first.getData());
+        this.first = new Node(cloneX(model.first.getData()));
 
 	Node contThis = this.first;
 	Node contModel = model.first.getNext();
 	
         for(; contModel != null; contThis = contThis.getNext(), contModel = contModel.getNext()){
-            contThis.setNext(new Node(contModel.getData()));
+            contThis.setNext(new Node(cloneX(contModel.getData())));
 	}
 
         this.last = contThis;
