@@ -1,3 +1,5 @@
+package classes;
+
 import java.lang.reflect.*;
 
 public class LinkedList<X> {

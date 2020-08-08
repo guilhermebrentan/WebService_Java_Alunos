@@ -1,4 +1,7 @@
-public class Matricula{
+package classes;
+
+public class Matricula
+{
     short ra;
     int cod;
     float nota, freq;
@@ -81,7 +84,11 @@ public class Matricula{
 	this.nota = model.nota;
 	this.freq = model.freq;
     }
-    public Object clone(){
+    
+    public Matricula() {
+	}
+
+	public Object clone(){
         Matricula ret=null;
 
         try{
